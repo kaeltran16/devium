@@ -1,6 +1,23 @@
 {
-  "dependencies": {
-    "create-react-app": "^2.1.1",
-    "global": "^4.3.2"
-  }
+  "dependencies": {},
+  "name": "devium",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-google": "^0.11.0",
+    "eslint-plugin-react": "^7.11.1"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Khang-Tran/devium.git"
+  },
+  "author": "Kael",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Khang-Tran/devium/issues"
+  },
+  "homepage": "https://github.com/Khang-Tran/devium#readme",
+  "description": ""
 }

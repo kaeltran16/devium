@@ -1,0 +1,15 @@
+{
+  "parser": "babel-eslint",
+  "extends": "google",
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      4
+    ]
+  }
+}

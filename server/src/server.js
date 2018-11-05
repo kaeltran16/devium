@@ -1,6 +1,6 @@
-import { GraphQLServer, PubSub } from 'graphql-yoga';
+import {GraphQLServer, PubSub} from 'graphql-yoga';
 import prisma from './prisma';
-import { resolvers, fragmentReplacements } from './resolvers/index';
+import {resolvers, fragmentReplacements} from './resolvers/index';
 
 const pubsub = new PubSub();
 
@@ -11,10 +11,10 @@ const server = new GraphQLServer({
         return {
             pubsub,
             prisma,
-            request
+            request,
         };
     },
-    fragmentReplacements
+    fragmentReplacements,
 });
 
 export default server;
