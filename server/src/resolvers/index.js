@@ -4,9 +4,9 @@ import Query from './Query';
 import User from './User';
 
 const resolvers = {
-    Query,
-    Mutation,
-    User
+   Query,
+   Mutation,
+   User
 };
 
 const fragmentReplacements = extractFragmentReplacements(resolvers);

@@ -2,9 +2,12 @@ import ApolloClient from 'apollo-boost';
 import React from 'react';
 import { ApolloProvider, Query } from 'react-apollo';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import MainContainer from './components/MainContainer';
 import { currentUser } from './queries';
 import * as serviceWorker from './serviceWorker';
+import setGlobalStyles from './styles/global';
+
+setGlobalStyles();
 
 const client = new ApolloClient({
    uri: 'http://localhost:5000',
@@ -34,7 +37,7 @@ const client = new ApolloClient({
 const Root = () => (
    <Query query={currentUser}>
       {({ data, loading }) =>
-         loading ? <App/> : null
+         loading ? null : <MainContainer/>
       }
    </Query>
 );

@@ -1,14 +1,20 @@
 {
-  "dependencies": {},
+  "dependencies": {
+    "grommet": "^2.0.0-rc"
+  },
   "name": "devium",
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
-    "eslint": "^5.8.0",
+    "concurrently": "^4.0.1",
     "eslint-config-google": "^0.11.0",
     "eslint-plugin-react": "^7.11.1"
   },
-  "scripts": {},
+  "scripts": {
+    "server": "cd server && yarn dev",
+    "client": "cd client && yarn start",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Khang-Tran/devium.git"

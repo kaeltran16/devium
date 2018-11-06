@@ -2,7 +2,7 @@
 
 type Query {
     users(query: String, first: Int, skip: Int, after: String, orderBy: UserOrderByInput): [User!]!
-    me: User!
+    currentUser: User!
 }
 
 type Mutation {
@@ -11,10 +11,6 @@ type Mutation {
     deleteUser: User!
     updateUser(data: UpdateUserInput!): User!
 }
-
-# type Subscription {
-
-# }
 
 type AuthPayload {
     token: String!
