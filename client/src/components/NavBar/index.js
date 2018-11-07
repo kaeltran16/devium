@@ -1,11 +1,23 @@
-import { Grommet } from 'grommet';
-import { grommet } from 'grommet/themes';
 import React from 'react';
+import {Button, Grid, Toolbar, Typography, IconButton} from '@material-ui/core';
 
-const NavBar = () => (
-   <Grommet theme={grommet}>
+class NavBar extends React.Component {
+    render() {
+        return (
+            <Toolbar>
+                <Grid lg={'12'} container>
+                    <Button color='primary' variant='text'>Write an article</Button>
+                    <Typography variant='h3'>Devium</Typography>
+                    <Grid container>
+                        <IconButton>
+                            <Search />
+                        </IconButton>
+                    </Grid>
+                </Grid>
+            </Toolbar>
+        );
+    }
+}
 
-   </Grommet>
-);
 
 export default NavBar;
