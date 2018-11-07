@@ -7,9 +7,12 @@
     "import"
   ],
   "rules": {
-    "indent": [
+    "indent": "off",
+    "comma-dangle": "off",
+    "object-curly-spacing": [
       "error",
-      4
-    ]
+      "always"
+    ],
+    "no-trailing-spaces": "off"
   }
 }
