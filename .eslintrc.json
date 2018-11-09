@@ -13,6 +13,18 @@
       "error",
       "always"
     ],
-    "no-trailing-spaces": "off"
+    "no-trailing-spaces": "off",
+    "linebreak-style": [
+      "warn",
+      "windows"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ]
   }
 }

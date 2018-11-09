@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "grommet": "^2.0.0-rc"
+    "prop-types": "^15.6.2"
   },
   "name": "devium",
   "version": "1.0.0",

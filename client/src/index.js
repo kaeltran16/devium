@@ -1,21 +1,21 @@
 import ApolloClient from 'apollo-boost';
 import React from 'react';
-import {ApolloProvider, Query} from 'react-apollo';
+import { ApolloProvider, Query } from 'react-apollo';
 import ReactDOM from 'react-dom';
 import MainContainer from './components/MainContainer';
-import {currentUser} from './queries';
 import * as serviceWorker from './serviceWorker';
 import setGlobalStyles from './styles/global';
-import withCustomTheme from "./withCustomTheme";
+import withCustomTheme from './withCustomTheme';
+import { getCurrentUser } from './queries';
 
 setGlobalStyles();
 
-const client = new ApolloClient({
-    uri: 'http://localhost:5000',
+export const client = new ApolloClient({
+    uri: 'http://localhost:4000',
     fetchOptions: {
         credentials: 'include'
     },
-    request: async (operation) => {
+    request: async operation => {
         const token = await localStorage.getItem('token');
         operation.setContext({
             headers: {
@@ -23,21 +23,18 @@ const client = new ApolloClient({
             }
         });
     },
-    onError: ({networkError}) => {
+    onError: ({ networkError }) => {
         if (networkError) {
             if (networkError.statusCode === 401) {
                 localStorage.removeItem('token');
             }
         }
-    },
-    clientState: {
-        defaults: {}
     }
 });
 
 const Root = () => (
-    <Query query={currentUser}>
-        {({data, loading}) =>
+    <Query query={getCurrentUser}>
+        {({ data, loading }) =>
             loading ? null : <MainContainer/>
         }
     </Query>
