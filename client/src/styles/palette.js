@@ -21,7 +21,7 @@ export default {
         text: {
             primary: '#212121',
             secondary: '#757575',
-            disabled: '#BDBDBD',
+            disabled: '#BDBDBD'
         }
     },
     typography: {
@@ -30,4 +30,5 @@ export default {
         fontSize: '12',
         htmlFontSize: 10
     }
-}
+};
+

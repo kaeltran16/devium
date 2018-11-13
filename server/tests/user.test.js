@@ -2,35 +2,35 @@ import casual from 'casual';
 import 'cross-fetch/polyfill';
 import prisma from '../src/prisma';
 import getClient from './utils/client';
-import { createUser } from './utils/operations';
-import seedDatabase from './utils/seed';
+import seedDatabase, { userOne } from './utils/seed';
+import { getProfile, getUsers, register } from './utils/operations';
 
 const client = getClient();
 
 beforeEach(seedDatabase);
 
-test('Should create a new user', async () => {
-   const variables = {
-      data: {
-         name: casual.name,
-         email: casual.email,
-         password: casual.password
-      }
-   };
-   const response = await client.mutate({
-      mutation: createUser,
-      variables
-   });
-   
-   const exists = await prisma.exists.User(
-      { id: response.data.createUser.user.id }
-   );
-   
-   expect(exists)
-   .toBe(true);
+it('Should create a new user', async () => {
+    const variables = {
+        data: {
+            name: casual.name,
+            email: casual.email,
+            password: casual.password
+        }
+    };
+    const response = await client.mutate({
+        mutation: register,
+        variables
+    });
+
+    const exists = await prisma.exists.User(
+        { id: response.data.register.user.id }
+    );
+
+    expect(exists)
+        .toBe(true);
 });
 
-/*test('Should expose public author profiles', async () => {
+test('Should expose public author profiles', async () => {
    const response = await client.query({ query: getUsers });
    
    expect(response.data.users.length)
@@ -70,7 +70,7 @@ test('Should not signup user with invalid password', async () => {
    
    await expect(
       client.mutate({
-         mutation: createUser,
+         mutation: register,
          variables
       })
    )
@@ -82,10 +82,10 @@ test('Should fetch user profile', async () => {
    const client = getClient(userOne.jwt);
    const { data } = await client.query({ query: getProfile });
    
-   expect(data.me.id)
+   expect(data.currentUser.id)
    .toBe(userOne.user.id);
-   expect(data.me.name)
+   expect(data.currentUser.name)
    .toBe(userOne.user.name);
-   expect(data.me.email)
+   expect(data.currentUser.email)
    .toBe(userOne.user.email);
-});*/
+});
