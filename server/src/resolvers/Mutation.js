@@ -2,11 +2,16 @@ import {
     comparePassword,
     generateToken,
     getUserId,
-    hashPassword
+    hashPassword,
+    isNotEmpty
 } from '../utils/authUtils';
 
 const Mutation = {
     async register(parent, { data }, { prisma }, info) {
+        if (!isNotEmpty(data)) {
+            throw new Error('inputs must not be empty');
+        }
+
         const password = await hashPassword(data.password);
 
         const user = await prisma.query.user({
@@ -35,6 +40,10 @@ const Mutation = {
     },
 
     async login(parent, { data }, { prisma }, info) {
+        if (!isNotEmpty(data)) {
+            throw new Error('inputs must not be empty');
+        }
+
         const user = await prisma.query.user({
             where: {
                 email: data.email

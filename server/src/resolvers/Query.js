@@ -1,7 +1,7 @@
 import { getUserId } from '../utils/authUtils';
 
 const Query = {
-    users(parent, args, { prisma }, info) {
+    getUsers(parent, args, { prisma }, info) {
         const opArgs = {
             first: args.first,
             skip: args.skip,

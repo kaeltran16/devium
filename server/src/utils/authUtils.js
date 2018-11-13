@@ -13,8 +13,12 @@ const getUserId = (request, requireAuth = true) => {
 
     if (header) {
         const token = header.replace('Bearer ', '');
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        return decoded.userId;
+        try {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            return decoded.userId;
+        } catch (e) {
+            throw new Error('Cannot verify token');
+        }
     }
 
     if (requireAuth) {
@@ -36,7 +40,17 @@ const hashPassword = password => {
 const comparePassword = async (password, target) =>
     await bcrypt.compare(password, target);
 
+const isNotEmpty = data => {
+    let isNotEmpty = true;
+    Object.values(data).forEach(value => {
+        if (value.length === 0) {
+            isNotEmpty = false;
+        }
+    });
+    return isNotEmpty;
+};
 
-export { generateToken, getUserId, hashPassword, comparePassword };
+
+export { generateToken, getUserId, hashPassword, comparePassword, isNotEmpty };
 
 

@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { client } from '../../index';
+import client from '../../client';
 import { getCurrentUser } from '../../queries/index';
 
 const useCurrentUser = () => {
-    const [currentUser, setCurrentUser] = useState(null);
+   const [currentUser, setCurrentUser] = useState(null);
 
-    useEffect(() => {
-        try {
-            const response = client.readQuery({ query: getCurrentUser });
-            setCurrentUser(response.currentUser);
-        } catch (e) {
+   useEffect(() => {
+      try {
+         const response = client.readQuery({ query: getCurrentUser });
+         setCurrentUser(response.currentUser);
+      } catch (e) {
 
-        }
-    }, [currentUser]);
+      }
+   }, [currentUser]);
 
-    return currentUser;
+   return currentUser;
 };
 
 export default useCurrentUser;

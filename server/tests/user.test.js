@@ -22,7 +22,6 @@ it('Should create a new user', async () => {
         variables
     });
 
-    console.log(response);
     const exists = await prisma.exists.User(
         { id: response.data.register.user.id }
     );

@@ -1,5 +1,5 @@
 type Query {
-    users(query: String, first: Int, skip: Int, after: String): [User!]!
+    getUsers(query: String, first: Int, skip: Int, after: String): [User!]!
     currentUser: User!
 }
 

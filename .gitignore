@@ -141,3 +141,5 @@ typings/
 
 # FuseBox cache
 .fusebox/
+
+server/config
