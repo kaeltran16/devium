@@ -1,6 +1,8 @@
 type Query {
     getUsers(query: String, first: Int, skip: Int, after: String): [User!]!
     currentUser: User!
+    getArticles: [Article!]!
+    getArticle(id: ID!): Article!
 }
 
 type Mutation {
@@ -8,11 +10,20 @@ type Mutation {
     login(data: LoginUserInput!): AuthPayload!
     deleteUser: User!
     updateUser(data: UpdateUserInput!): User!
+    createArticle(data: CreateArticleInput!): Article!
+    updateArtcile(data: CreateArticleInput!): Article!
+    deleteArticle(id: ID!): Article!
 }
 
 type AuthPayload {
     token: String!
     user: User!
+}
+
+input CreateArticleInput {
+    title: String!
+    body: String!
+    user: CreateUserInput!
 }
 
 input CreateUserInput {
@@ -37,6 +48,31 @@ type User {
     name: String!
     email: String
     password: String!
+    updatedAt: String!
+    createdAt: String!
+}
+
+type Tag {
+    id: ID!
+    name: String!
+    updatedAt: String!
+    createdAt: String!
+}
+
+type Comment {
+    id: ID!
+    user: User!
+    text: String!
+    updatedAt: String!
+    createdAt: String!
+}
+
+type Article {
+    id: ID!
+    title: String!
+    body: String!
+    img: String
+    user: User!
     updatedAt: String!
     createdAt: String!
 }
